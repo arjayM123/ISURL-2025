@@ -1,10 +1,10 @@
 
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "isurl";
-    private $username = "root";
-    private $password = "";
+    private $host = "sql110.infinityfree.com";
+    private $db_name = "if0_39631456_isurl_db";
+    private $username = "if0_39631456";
+    private $password = "ISURL2025";
     public $conn;
 
     public function getConnection() {

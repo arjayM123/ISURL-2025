@@ -133,12 +133,11 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="standalone-icon">
                             <i class="fas fa-book-open " style="color:rgb(83, 209, 144);"></i>
                         </div>
-                    </a>
-                    <a href="https://isur-ora.example.com" class="standalone-card" target="_blank">
-                        <div class="standalone-icon">
-                            <i class="fas fa-database" style="color: #6495ED;"></i>
-                        </div>
-                        <span class="standalone-title">ISUR-ORA</span>
+                        <span class="standalone-title">ISUR-OPAC</span>
+                        <p style=" font-size:0.98rem; color:#226c2a; text-align:center;">
+                            <i class="fas fa-info-circle" style="margin-right:6px;"></i>
+                            Note: You can access the OPAC inside the library at ISU Roxas Campus.
+                        </p>
                     </a>
                 </div>
                 <br>

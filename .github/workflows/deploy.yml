@@ -1,0 +1,25 @@
+name: ISURL
+
+on:
+  push:
+    branches:
+      - main  # Change if you're using a different branch
+
+jobs:
+  ftp-deploy:
+    name: Upload to InfinityFree Hosting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftpupload.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          server-dir: /htdocs/
+          local-dir: ./

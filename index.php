@@ -77,7 +77,7 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="content">
         <div class="content-left" id="news-events">
             <h2>NEWS & UPDATES</h2>
-          <?php foreach ($news_events as $news): ?>
+         <?php foreach ($news_events as $news): ?>
     <div class="news-card" onclick="window.location.href='reports_view.php?id=<?php echo $news['id']; ?>'" style="cursor: pointer;">
         <div class="news-card-grid<?php echo empty($news['image_id']) ? ' no-image' : ''; ?>">
             <?php if (!empty($news['image_id'])): ?>
@@ -95,13 +95,12 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php
                     $content = strip_tags($news['content']);
                     if (strlen($content) > 200) {
-                        echo substr($content, 0, 200) . '... <span class="view-more-text">View more</span>';
+                        echo substr($content, 0, 200) . '...';
                     } else {
                         echo $content;
-                        // Always show "View more" text
-                        echo ' <span class="view-more-text">View more</span>';
                     }
                     ?>
+                    <span class="view-more-text">View more</span>
                 </div>
             </div>
         </div>

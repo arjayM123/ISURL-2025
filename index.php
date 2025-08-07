@@ -77,35 +77,38 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="content">
         <div class="content-left" id="news-events">
             <h2>NEWS & UPDATES</h2>
-         <?php foreach ($news_events as $news): ?>
-    <div class="news-card" onclick="window.location.href='reports_view.php?id=<?php echo $news['id']; ?>'" style="cursor: pointer;">
-        <div class="news-card-grid<?php echo empty($news['image_id']) ? ' no-image' : ''; ?>">
-            <?php if (!empty($news['image_id'])): ?>
-                <div class="news-image">
-                    <img src="./api/get_news_image.php?id=<?php echo $news['image_id']; ?>" alt="News Image"
-                        loading="lazy">
+            <?php foreach ($news_events as $news): ?>
+                <div class="news-card">
+                    <div class="news-card-grid<?php echo empty($news['image_id']) ? ' no-image' : ''; ?>">
+                        <?php if (!empty($news['image_id'])): ?>
+                            <div class="news-image">
+                                <img src="./api/get_news_image.php?id=<?php echo $news['image_id']; ?>" alt="News Image"
+                                    loading="lazy">
+                            </div>
+                        <?php endif; ?>
+                        <div class="news-details">
+                            <h3 class="news-title"><?php echo htmlspecialchars($news['title']); ?></h3>
+                            <div class="news-date">
+                                Posted: <?php echo date('F j, Y', strtotime($news['created_at'])); ?>
+                            </div>
+                            <div class="news-content">
+                                <?php
+                                $content = strip_tags($news['content']);
+                                if (strlen($content) > 200) {
+                                    echo substr($content, 0, 200) . '... <a href="reports_view.php?id=' . $news['id'] . '">View more</a>';
+                                } else {
+                                    echo $content;
+                                    // Always show "View more" button
+                                    echo ' <a href="reports_view.php?id=' . $news['id'] . '">View more</a>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            <?php endif; ?>
-            <div class="news-details">
-                <h3 class="news-title"><?php echo htmlspecialchars($news['title']); ?></h3>
-                <div class="news-date">
-                    Posted: <?php echo date('F j, Y', strtotime($news['created_at'])); ?>
-                </div>
-                <div class="news-content">
-                    <?php
-                    $content = strip_tags($news['content']);
-                    if (strlen($content) > 200) {
-                        echo substr($content, 0, 200) . '...';
-                    } else {
-                        echo $content;
-                    }
-                    ?>
-                    <span class="view-more-text">View more</span>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
+            <?php endforeach; ?>
+
             <!-- Pagination Links -->
             <?php if ($total_pages > 1): ?>
                 <div class="pagination">
@@ -785,7 +788,7 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
             width: 100%;
             max-width: 100%;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            height: 300px;
+            height: 400px;
             /* Fixed height for all cards */
             border-radius: 8px;
         }
@@ -961,71 +964,70 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         /* Responsive adjustments - minimal media queries */
-       @media screen and (max-width: 768px) {
-    .news-card {
-        height: auto; /* Allow dynamic height on mobile */
-        min-height: auto;
-    }
+        @media screen and (max-width: 768px) {
+            .news-card {
+                height: 900px;
+                /* Taller for mobile stacked layout */
+            }
 
-    .news-card-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto; /* Allow rows to size naturally */
-    }
+            .news-card-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 200px 1fr;
+                /* Fixed 200px for image, rest for content */
+            }
 
-    .news-image {
-        height: 200px;
-        width: 100%;
-    }
+            .news-image {
+                height: 200px;
+                width: 100%;
+            }
 
-    .news-details {
-        height: auto; /* Allow content to expand naturally */
-        min-height: auto;
-        padding: 1.25rem;
-    }
+            .news-details {
+                height: 200px;
+                /* Fixed content area height */
+                padding: 1.25rem;
+            }
 
-    .news-title {
-        font-size: 1.2rem;
-        height: auto; /* Allow title to expand */
-    }
+            .news-title {
+                font-size: 1.2rem;
+                height: 3rem;
+            }
 
-    .news-content {
-        font-size: 0.9rem;
-    }
-}
+            .news-content {
+                font-size: 0.9rem;
+            }
+        }
 
-@media screen and (max-width: 480px) {
-    .content {
-        padding: 0.75rem;
-    }
+        @media screen and (max-width: 480px) {
+            .content {
+                padding: 0.75rem;
+            }
 
-    .news-card {
-        height: auto;
-        min-height: auto;
-        margin-bottom: 1.5rem;
-    }
+            .news-card {
+                height: 380px;
+                margin-bottom: 1.5rem;
+            }
 
-    .news-card-grid {
-        grid-template-rows: auto auto;
-    }
+            .news-card-grid {
+                grid-template-rows: 180px 1fr;
+            }
 
-    .news-image {
-        height: 180px;
-    }
+            .news-image {
+                height: 180px;
+            }
 
-    .news-details {
-        padding: 1rem;
-        height: auto;
-        min-height: auto;
-    }
+            .news-details {
+                padding: 1rem;
+                height: 200px;
+            }
 
-    .news-title {
-        font-size: 1.1rem;
-        height: auto;
-    }
+            .news-title {
+                font-size: 1.1rem;
+                height: 2.8rem;
+            }
 
-    .news-content {
-        font-size: 0
-    }
+            .news-content {
+                font-size: 0.85rem;
+            }
 
             .pagination a {
                 padding: 0.5rem;

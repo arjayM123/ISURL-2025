@@ -962,70 +962,71 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         /* Responsive adjustments - minimal media queries */
-        @media screen and (max-width: 768px) {
-            .news-card {
-                height: 400px;
-                /* Taller for mobile stacked layout */
-            }
+       @media screen and (max-width: 768px) {
+    .news-card {
+        height: auto; /* Allow dynamic height on mobile */
+        min-height: auto;
+    }
 
-            .news-card-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: 200px 1fr;
-                /* Fixed 200px for image, rest for content */
-            }
+    .news-card-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto; /* Allow rows to size naturally */
+    }
 
-            .news-image {
-                height: 200px;
-                width: 100%;
-            }
+    .news-image {
+        height: 200px;
+        width: 100%;
+    }
 
-            .news-details {
-                height: 200px;
-                /* Fixed content area height */
-                padding: 1.25rem;
-            }
+    .news-details {
+        height: auto; /* Allow content to expand naturally */
+        min-height: auto;
+        padding: 1.25rem;
+    }
 
-            .news-title {
-                font-size: 1.2rem;
-                height: 3rem;
-            }
+    .news-title {
+        font-size: 1.2rem;
+        height: auto; /* Allow title to expand */
+    }
 
-            .news-content {
-                font-size: 0.9rem;
-            }
-        }
+    .news-content {
+        font-size: 0.9rem;
+    }
+}
 
-        @media screen and (max-width: 480px) {
-            .content {
-                padding: 0.75rem;
-            }
+@media screen and (max-width: 480px) {
+    .content {
+        padding: 0.75rem;
+    }
 
-            .news-card {
-                height: 380px;
-                margin-bottom: 1.5rem;
-            }
+    .news-card {
+        height: auto;
+        min-height: auto;
+        margin-bottom: 1.5rem;
+    }
 
-            .news-card-grid {
-                grid-template-rows: 180px 1fr;
-            }
+    .news-card-grid {
+        grid-template-rows: auto auto;
+    }
 
-            .news-image {
-                height: 180px;
-            }
+    .news-image {
+        height: 180px;
+    }
 
-            .news-details {
-                padding: 1rem;
-                height: 200px;
-            }
+    .news-details {
+        padding: 1rem;
+        height: auto;
+        min-height: auto;
+    }
 
-            .news-title {
-                font-size: 1.1rem;
-                height: 2.8rem;
-            }
+    .news-title {
+        font-size: 1.1rem;
+        height: auto;
+    }
 
-            .news-content {
-                font-size: 0.85rem;
-            }
+    .news-content {
+        font-size: 0
+    }
 
             .pagination a {
                 padding: 0.5rem;

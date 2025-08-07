@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <p>Monday - Friday<br>7:00 AM - 5:00 PM</p>
     </div>
 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSduOSnigxIj-a6c9YwVLWkeQ7erdOcsc8KH075WsDn8QrT34Q/viewform?usp=header" class="btn">SATISFACTION SURVEY</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0qySXQkUAa1tfVVPCdNv9bR0qupnpqHXF-bxjTumQ_ThRVA/viewform?usp=sharing&ouid=110740436105344517127" class="btn">SATISFACTION SURVEY</a>
                 <div class="site-visits">
                     <span>SITE VISITS</span>
 <span class="counter"><?php echo $total_visits; ?></span>

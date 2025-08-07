@@ -431,8 +431,8 @@
                 <div class="footer-social">
                     <p>Follow us</p>
                     <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.facebook.com/isurlibrary" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+
                     </div>
                 </div>
             </div>

@@ -77,38 +77,36 @@ $news_events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="content">
         <div class="content-left" id="news-events">
             <h2>NEWS & UPDATES</h2>
-            <?php foreach ($news_events as $news): ?>
-                <div class="news-card">
-                    <div class="news-card-grid<?php echo empty($news['image_id']) ? ' no-image' : ''; ?>">
-                        <?php if (!empty($news['image_id'])): ?>
-                            <div class="news-image">
-                                <img src="./api/get_news_image.php?id=<?php echo $news['image_id']; ?>" alt="News Image"
-                                    loading="lazy">
-                            </div>
-                        <?php endif; ?>
-                        <div class="news-details">
-                            <h3 class="news-title"><?php echo htmlspecialchars($news['title']); ?></h3>
-                            <div class="news-date">
-                                Posted: <?php echo date('F j, Y', strtotime($news['created_at'])); ?>
-                            </div>
-                            <div class="news-content">
-                                <?php
-                                $content = strip_tags($news['content']);
-                                if (strlen($content) > 200) {
-                                    echo substr($content, 0, 200) . '... <a href="reports_view.php?id=' . $news['id'] . '">View more</a>';
-                                } else {
-                                    echo $content;
-                                    // Always show "View more" button
-                                    echo ' <a href="reports_view.php?id=' . $news['id'] . '">View more</a>';
-                                }
-                                ?>
-                            </div>
-                        </div>
-
-                    </div>
+          <?php foreach ($news_events as $news): ?>
+    <div class="news-card" onclick="window.location.href='reports_view.php?id=<?php echo $news['id']; ?>'" style="cursor: pointer;">
+        <div class="news-card-grid<?php echo empty($news['image_id']) ? ' no-image' : ''; ?>">
+            <?php if (!empty($news['image_id'])): ?>
+                <div class="news-image">
+                    <img src="./api/get_news_image.php?id=<?php echo $news['image_id']; ?>" alt="News Image"
+                        loading="lazy">
                 </div>
-            <?php endforeach; ?>
-
+            <?php endif; ?>
+            <div class="news-details">
+                <h3 class="news-title"><?php echo htmlspecialchars($news['title']); ?></h3>
+                <div class="news-date">
+                    Posted: <?php echo date('F j, Y', strtotime($news['created_at'])); ?>
+                </div>
+                <div class="news-content">
+                    <?php
+                    $content = strip_tags($news['content']);
+                    if (strlen($content) > 200) {
+                        echo substr($content, 0, 200) . '... <span class="view-more-text">View more</span>';
+                    } else {
+                        echo $content;
+                        // Always show "View more" text
+                        echo ' <span class="view-more-text">View more</span>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
             <!-- Pagination Links -->
             <?php if ($total_pages > 1): ?>
                 <div class="pagination">

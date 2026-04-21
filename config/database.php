@@ -1,10 +1,9 @@
-
 <?php
 class Database {
-    private $host = "sql110.infinityfree.com";
-    private $db_name = "if0_39631456_isurl_db";
-    private $username = "if0_39631456";
-    private $password = "ISURL2025";
+    private $host = "sql308.infinityfree.com";
+    private $db_name = "if0_41663378_isurl_db";
+    private $username = "if0_41663378";
+    private $password = "isuroxaslibrary";
     public $conn;
 
     public function getConnection() {
@@ -22,3 +21,4 @@ class Database {
         return $this->conn;
     }
 }
+?>
